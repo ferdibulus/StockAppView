@@ -1,5 +1,11 @@
 <div class="container">
-    
+  <dx-toast [(visible)]="isVisible" [type]="type" [message]="message" width="500px">
+    <dxo-position
+    my="top"
+    at="top"
+    of="#targetElement">
+</dxo-position>
+  </dx-toast>
     <section class="vh-100">
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -12,15 +18,15 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example3">Email address</label>
-                  <input type="email" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Enter a valid email address" />
+                  <input type="text" id="form3Example3" class="form-control form-control-lg"
+                    placeholder="Enter a valid email address" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}"/>
                 </div>
       
                 <!-- Password input -->
                 <div class="form-outline mb-3"> 
                   <label class="form-label" for="form3Example4">Password</label>
                   <input type="password" id="form3Example4" class="form-control form-control-lg"
-                    placeholder="Enter password" />   
+                    placeholder="Enter password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"/>   
                 </div>
       
                 <div class="text-center text-lg-start mt-4 pt-2">

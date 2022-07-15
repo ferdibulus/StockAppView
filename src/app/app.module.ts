@@ -16,6 +16,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { DxDataGridModule } from 'devextreme-angular';
 import { LoginComponent } from './login/login.component';
+import { DxToastModule } from 'devextreme-angular';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,11 @@ import { LoginComponent } from './login/login.component';
     MatDividerModule,
     MatListModule,
     //DevExtreme
-    DxDataGridModule
+    DxDataGridModule,
+    DxToastModule,
+    //Form
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
