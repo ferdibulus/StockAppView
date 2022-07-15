@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import * as Stomp from "stompjs"
-import * as SockJS from 'sockjs-client';
-import { RmStompServiceService } from './service/websocketService';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +7,12 @@ import { RmStompServiceService } from './service/websocketService';
 })
 export class AppComponent {
   title = 'stock-app-view';
-  webSocketEndPoint: string = 'ws://localhost:8080/user';
-  topic: string = "/topic/Products";
-  stompClient: any;
+  sideBarOpen = true;
 
-  constructor(private stmp:RmStompServiceService){
-    
+  constructor(){
   }
 
-  ngOnInit() {
-    this.stmp.consume(this.topic).subscribe(data =>{
-      console.log("Data:"   + data)
-    })
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 }
