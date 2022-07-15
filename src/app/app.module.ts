@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { DxDataGridModule } from 'devextreme-angular';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DxDataGridModule } from 'devextreme-angular';
     HomeComponent,
     DashboardComponent,
     SidenavComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

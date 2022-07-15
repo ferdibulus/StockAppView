@@ -22,4 +22,10 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+
 }

@@ -7,12 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'stock-app-view';
-  sideBarOpen = true;
-
+  
   constructor(){
-  }
-
-  sideBarToggler() {
-    this.sideBarOpen = !this.sideBarOpen;
   }
 }

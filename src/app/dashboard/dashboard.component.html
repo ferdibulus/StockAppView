@@ -1,13 +1,24 @@
-<div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-  <div class="page__content shadow p-3 position-relative">
-    <div class="page__content-data position-absolute text-center">
-      <dx-data-grid
-      id="gridContainer"
-      [dataSource]="products"
-      [columns]="['id', 'name', 'barcode', 'amount', 'price']"
-    >
-    </dx-data-grid>
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+    <router-outlet></router-outlet>
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+      <div class="page__content shadow p-3 position-relative">
+        <div class="page__content-data position-absolute text-center">
+          <dx-data-grid
+          id="gridContainer"
+          [dataSource]="products"
+          [columns]="['id', 'name', 'barcode', 'amount', 'price']"
+        >
+        </dx-data-grid>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
