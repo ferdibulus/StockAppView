@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { DxToastModule } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DxChartModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     //DevExtreme
     DxDataGridModule,
     DxToastModule,
+    DxChartModule,
     //Form
     FormsModule,
     HttpClientModule

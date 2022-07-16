@@ -13,4 +13,9 @@ export class Api {
     const url = 'http://localhost:8080/users/login';
     return this.http.post<any>(url, user);
   }
+
+  getAllProducts(): Observable<any> {
+    const url = 'http://localhost:8080/products';
+    return this.http.get<any>(url);
+  }
 }

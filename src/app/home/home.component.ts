@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Api } from '../api/api';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   sideBarOpen = true;
-
-  constructor(){
+  dataSource = [{
+  }];
+  constructor(private api:Api){
   }
 
   sideBarToggler() {
@@ -16,6 +18,20 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.api.getAllProducts().subscribe((response: any) => {
+      this.dataSource = response;
+    });
+    
+  }
+
+  onPointClick(e:any) {
+    e.target.select();
+  }
+
+  customizeTooltip(arg: any) {
+    return {
+      text: `${arg.valueText} amount: ${arg.valueText}`
+    };
   }
 
 }
