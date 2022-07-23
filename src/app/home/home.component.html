@@ -15,27 +15,8 @@
               <div class="card">
                 <div class="card-body">
                   <div class="card text-center">
-                    <div class="card-header">Featured</div>
                     <div class="card-body">
-                      <dx-chart id="chart" [dataSource]="dataSource">
-                        <dxi-series
-                          argumentField="name"
-                          valueField="amount"
-                          name="Product Amount"
-                          type="bar"
-                          color="#333575"
-                        >
-                      </dxi-series>
-                      <dxo-export [enabled]="true"></dxo-export>
-                      <dxo-tooltip
-                      [enabled]="true"
-                      location="edge"
-                      [customizeTooltip]="customizeTooltip"
-                    >
-                    </dxo-tooltip>
-                      </dx-chart>
                     </div>
-                    <div class="card-footer text-muted">2 days ago</div>
                   </div>
                 </div>
               </div>
@@ -44,27 +25,23 @@
               <div class="card">
                 <div class="card-body">
                   <div class="card text-center">
-                    <div class="card-header">Featured</div>
                     <div class="card-body">
-                      <dx-chart id="chart" [dataSource]="dataSource">
-                        <dxi-series
-                          argumentField="name"
-                          valueField="amount"
-                          name="Product Amount"
-                          type="bar"
-                          color="#333575"
-                        >
-                      </dxi-series>
+                      <dx-pie-chart
+                      id="pie-chart"
+                      [dataSource]="dataSource"
+                      palette="bright"
+                      title="Stock Status"
+                    >
+                      <dxi-series argumentField="name" valueField="amount"> </dxi-series>
                       <dxo-export [enabled]="true"></dxo-export>
                       <dxo-tooltip
                       [enabled]="true"
                       location="edge"
                       [customizeTooltip]="customizeTooltip"
-                    >
-                    </dxo-tooltip>
-                      </dx-chart>
+                      [zIndex]="5000"
+                    ></dxo-tooltip>
+                    </dx-pie-chart>
                     </div>
-                    <div class="card-footer text-muted">2 days ago</div>
                   </div>
                 </div>
               </div>

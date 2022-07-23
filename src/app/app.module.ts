@@ -20,6 +20,8 @@ import { DxToastModule } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DxChartModule } from 'devextreme-angular';
+import { DxPieChartModule } from 'devextreme-angular';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { DxChartModule } from 'devextreme-angular';
     DxDataGridModule,
     DxToastModule,
     DxChartModule,
+    DxPieChartModule,
     //Form
     FormsModule,
     HttpClientModule
@@ -53,3 +56,4 @@ import { DxChartModule } from 'devextreme-angular';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);

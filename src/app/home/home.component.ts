@@ -1,4 +1,6 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { Api } from '../api/api';
 
 @Component({
@@ -10,6 +12,7 @@ export class HomeComponent implements OnInit {
   sideBarOpen = true;
   dataSource = [{
   }];
+  pipe: any = new DecimalPipe('en-US');
   constructor(private api:Api){
   }
 
@@ -30,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   customizeTooltip(arg: any) {
     return {
-      text: `${arg.valueText} amount: ${arg.valueText}`
+      text: `${arg.argumentText}<br/>${arg.valueText}`,
     };
   }
 

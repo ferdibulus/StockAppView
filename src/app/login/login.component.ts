@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.message = "Username/password is incorrect or need to be approved!";
         this.isVisible = true;
       }else{
-        this.auth.setLoggedIn();
+        localStorage.setItem("access", JSON.stringify(true));
         localStorage.setItem("username", response.username);
         this.router.navigate(['home']);
       }

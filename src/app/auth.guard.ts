@@ -6,15 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  disable = false;
-  setLoggedIn(){
-    this.disable = true;
-  }
+  disable:boolean= false;
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    //TO DO change with this.disable
-    return true;
+    this.disable=(localStorage.getItem("access") == "true");
+    return this.disable;
   }
   
 }
