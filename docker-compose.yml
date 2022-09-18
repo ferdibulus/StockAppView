@@ -1,0 +1,7 @@
+version: '3.5'
+services:
+  angular-service:
+    container_name: ui-container
+    build: .
+    ports:
+      - '4200:4200'
