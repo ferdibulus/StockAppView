@@ -1,7 +1,7 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM node:latest as build
+FROM node:16.13.1 as build
 
 # Set the working directory
 WORKDIR /app
@@ -24,7 +24,9 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/sample-angular-app /usr/share/nginx/html
+COPY --from=build /app/dist/stock-app-view /usr/share/nginx/html
+COPY entrypoint.sh ./docker-entrypoint.d/entrypoint.sh
 
-# Expose port 80
-EXPOSE 80
+# Grant Linux permissions and run entrypoint script
+RUN chmod +x ./docker-entrypoint.d/entrypoint.sh
+
