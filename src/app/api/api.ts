@@ -10,12 +10,12 @@ export class Api {
   constructor(private http: HttpClient) {}
 
   saveUser(user:any): Observable<any> {
-    const url = 'http://localhost:8080/users/login';
+    const url = 'http://localhost:8181/users/login';
     return this.http.post<any>(url, user);
   }
 
   getAllProducts(): Observable<any> {
-    const url = 'http://localhost:8080/products';
+    const url = 'http://localhost:8181/products';
     return this.http.get<any>(url);
   }
 }
