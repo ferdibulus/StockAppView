@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DxChartModule } from 'devextreme-angular';
 import { DxPieChartModule } from 'devextreme-angular';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { DxiColumnModule } from 'devextreme-angular/ui/nested';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     DxToastModule,
     DxChartModule,
     DxPieChartModule,
+    DxiColumnModule,
     //Form
     FormsModule,
     HttpClientModule

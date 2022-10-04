@@ -7,13 +7,18 @@
     <router-outlet></router-outlet>
     <div class="container-fluid page">
       <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-      <div class="page__content shadow p-3 position-relative">
+      <div class="page__content shadow">
         <div class="page__content-data position-absolute text-center">
           <dx-data-grid
           id="gridContainer"
-          [dataSource]="products"
-          [columns]="['id', 'name', 'barcode', 'amount', 'price']"
+          [dataSource]="dataSource"
         >
+        <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+        <dxi-column dataField="id" caption="Id"></dxi-column>
+        <dxi-column dataField="name" caption="name"></dxi-column>
+        <dxi-column dataField="barcode" caption="barcode"></dxi-column>
+        <dxi-column dataField="amount" caption="amount"></dxi-column>
+        <dxi-column dataField="price" caption="price"></dxi-column>
         </dx-data-grid>
         </div>
       </div>

@@ -15,7 +15,7 @@ export interface SubscriptionModel {
 })
 export class RmStompServiceService {
   private stompClient: Stomp.Client | null = null;
-  private url = 'http://localhost:8080/appWebSocket';
+  private url = 'http://localhost:8181/appWebSocket';
   private connectionSubject: Subject<Stomp.Client | null> = new Subject();
  
   private subscriptions: Map<string, SubscriptionModel> = new Map<string, SubscriptionModel>();
