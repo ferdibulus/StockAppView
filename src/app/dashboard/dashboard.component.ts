@@ -60,7 +60,7 @@ getUpdateData(id:number,isChecked:string){
   let body =  {"id": id,"isChecked" : isChecked};
   const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
           try{
-           this.http.put('http://localhost:82/Kelony/php-auth-api/updateData.php',body,{ headers: headers }).subscribe((resData:any) => {
+           this.http.put('http://92.205.30.150:82/Kelony/php-auth-api/updateData.php',body,{ headers: headers }).subscribe((resData:any) => {
                 console.log("Update:" + resData);
             });
           }catch(e){
@@ -72,7 +72,7 @@ getUserRoles(){
   let emailOfUser=localStorage.getItem("username")
   const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
           try{
-           this.http.get('http://localhost:82/Kelony/php-auth-api/getUser.php',{ headers: headers }).subscribe((resData:any) => {
+           this.http.get('http://92.205.30.150:82/Kelony/php-auth-api/getUser.php',{ headers: headers }).subscribe((resData:any) => {
               if(resData.user.filter((x: { email: string; })=>x.email==emailOfUser)[0].status === "R/W"){
                 this.statusOk = true;
               }else{
@@ -88,7 +88,7 @@ getData(){
   let token=localStorage.getItem("token");
   const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
           try{
-           this.http.get('http://localhost:82/Kelony/php-auth-api/getData.php',{ headers: headers }).subscribe((resData:any) => {
+           this.http.get('http://92.205.30.150:82/Kelony/php-auth-api/getData.php',{ headers: headers }).subscribe((resData:any) => {
               this.numberofChecked = resData.data.filter((x: { isChecked: string; })=>x.isChecked == "checked").length;
               this.lengthOfData = resData.data.length;
               this.rowData1 = resData.data;
