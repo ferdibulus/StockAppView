@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     let body =  {"email": this.user.username.trim(),"password" : this.user.password.trim()};
     const headers = new HttpHeaders();
     try{
-      this.http.post('http://localhost/Kelony/php-auth-api/login.php',body,{ headers: headers }).subscribe((resData:any) => {
+      this.http.post('http://localhost:82/Kelony/php-auth-api/login.php',body,{ headers: headers }).subscribe((resData:any) => {
          if(resData.token != null){
           localStorage.setItem("access", JSON.stringify(true));
           localStorage.setItem("token", resData.token);
