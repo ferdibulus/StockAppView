@@ -14,7 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxDataGridModule, DxFileUploaderModule, DxProgressBarModule, DxTooltipModule } from 'devextreme-angular';
 import { LoginComponent } from './login/login.component';
 import { DxToastModule } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { DxChartModule } from 'devextreme-angular';
 import { DxPieChartModule } from 'devextreme-angular';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxiColumnModule } from 'devextreme-angular/ui/nested';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,13 @@ import { DxiColumnModule } from 'devextreme-angular/ui/nested';
     DxiColumnModule,
     //Form
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DxFileUploaderModule,
+    DxProgressBarModule,
+    DxTooltipModule,
+
+    //AG Grid
+    AgGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

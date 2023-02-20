@@ -1,4 +1,6 @@
 @import "../home/home.component.scss";
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 :host {
     display: flex;
     flex-direction: column;

@@ -6,41 +6,97 @@
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <router-outlet></router-outlet>
     <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2">Home</div>
+      <div class="d-flex page__box p-3 mt-2">Chart</div>
         <div class="page__content shadow p-3 position-relative">
           <div class="container">
   
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
                   <div class="card text-center">
                     <div class="card-body">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card text-center">
-                    <div class="card-body">
-                      <dx-pie-chart
-                      id="pie-chart"
-                      [dataSource]="dataSource"
-                      palette="bright"
-                      title="Stock Status"
-                    >
-                      <dxi-series argumentField="name" valueField="amount"> </dxi-series>
-                      <dxo-export [enabled]="true"></dxo-export>
-                      <dxo-tooltip
-                      [enabled]="true"
-                      location="edge"
-                      [customizeTooltip]="customizeTooltip"
-                      [zIndex]="5000"
-                    ></dxo-tooltip>
-                    </dx-pie-chart>
+                      <div class="card-body">
+                        <div class="widget-container flex-box">
+      <!-- Upload Excel File -->
+                          <span>Upload Here</span>
+                                <div
+                                  id="dropzone-external"
+                                  class="flex-box"
+                                  [ngClass]="
+                                    isDropZoneActive
+                                      ? ['dx-theme-accent-as-border-color', 'dropzone-active']
+                                      : ['dx-theme-border-color']
+                                  "
+                                >
+                                  <span *ngIf="imageSource">{{ imageSource }}</span>
+                                  <div id="dropzone-text" class="flex-box" *ngIf="textVisible">
+                                    <span>Drag & Drop the desired file</span>
+                                    <span>…or click to browse for a file instead.</span>
+                                  </div>
+                                  <dx-progress-bar
+                                    #uploadProgress
+                                    [min]="0"
+                                    [max]="100"
+                                    width="30%"
+                                    [showStatus]="false"
+                                    [visible]="progressVisible"
+                                    [value]="progressValue"
+                                  ></dx-progress-bar>
+                                </div>
+                                <dx-file-uploader
+                                  #fileUploader
+                                  dialogTrigger="#dropzone-external"
+                                  dropZone="#dropzone-external"
+                                  [multiple]="false"
+                                  [allowedFileExtensions]="['.xlsx']"
+                                  uploadMode="instantly"
+                                  uploadUrl="https://js.devexpress.com/Demos/NetCore/FileUploader/Upload"
+                                  [visible]="false"
+                                  (onDropZoneEnter)="onDropZoneEnter($event)"
+                                  (onDropZoneLeave)="onDropZoneLeave($event)"
+                                  (onUploaded)="onUploaded($event)"
+                                  (onProgress)="onProgress($event)"
+                                  (onUploadStarted)="onUploadStarted($event)"
+                                ></dx-file-uploader>
+                              </div>
+                            </div>
+      <!-- Chart Start-->
+                            <dx-chart
+                              [dataSource]="architecturesInfo"
+                              title="Performance (last week)"
+                              (onLegendClick)="legendClickHandler($event)"
+
+                            >
+                              <dxi-series valueField="actual" name="Actual"></dxi-series>
+                              <dxi-series valueField="prediction" name="Prediction"></dxi-series>
+                              <dxi-series valueField="EFA" name="EFA"></dxi-series>
+                              <dxo-common-series-settings
+                                #seriesSettings
+                                argumentField="datetime"
+                              >
+                              </dxo-common-series-settings>
+                    
+                              <dxo-margin [bottom]="20"></dxo-margin>
+                              <dxo-common-axis-settings>
+                      
+                              </dxo-common-axis-settings>
+                              <dxo-legend verticalAlignment="bottom" horizontalAlignment="center">
+                              </dxo-legend>
+                              <dxo-argument-axis [allowDecimals]="true">
+                                <dxo-label wordWrap="none" displayMode="rotate" [rotationAngle]=270></dxo-label>
+                              </dxo-argument-axis>
+                              <dxo-export [enabled]="true"></dxo-export>
+                              <dxo-zoom-and-pan
+                              argumentAxis="both"
+                              valueAxis="both"> <!-- or "zoom" | "pan" | "none" -->
+                          </dxo-zoom-and-pan>
+                          <dxo-tooltip
+                            [enabled]="true"
+                            [customizeTooltip]="customizeTooltip"
+                          >
+                          </dxo-tooltip>
+                          </dx-chart>
                     </div>
                   </div>
                 </div>

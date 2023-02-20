@@ -6,21 +6,18 @@
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <router-outlet></router-outlet>
     <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-      <div class="page__content shadow">
-        <div class="page__content-data position-absolute text-center">
-          <dx-data-grid
-          id="gridContainer"
-          [dataSource]="dataSource"
-        >
-        <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
-        <dxi-column dataField="id" caption="Id"></dxi-column>
-        <dxi-column dataField="name" caption="name"></dxi-column>
-        <dxi-column dataField="barcode" caption="barcode"></dxi-column>
-        <dxi-column dataField="amount" caption="amount"></dxi-column>
-        <dxi-column dataField="price" caption="price"></dxi-column>
-        </dx-data-grid>
+      <div class="d-flex page__box p-3 mt-2">Grid Datas With CheckBoxes</div>
+      <div class="container" style="color: black;">
+        <h3>DATA</h3>
+        <div class="card" *ngFor="let item of rowData1">
+          <h5 class="card-header">Id: {{item.id}}</h5>
+          <div class="card-body">
+            <input *ngIf="this.statusOk" class="custom-control-input" type="checkbox" id="disabledCheck" value="{{ item.id }}" ngModel="{{ item.isChecked }}" (change)="checkValueAndUpdateData($event)">
+            <input *ngIf="!this.statusOk" class="custom-control-input" type="checkbox" id="disabledCheck" value="{{ item.id }}" ngModel="{{ item.isChecked }}" disabled>
+            <label class="card-title">{{item.text}}</label>
+          </div>
         </div>
+        <h5>Number of checked checkboxes : {{ numberofChecked }} / {{ lengthOfData }}</h5>
       </div>
     </div>
   </mat-drawer-content>

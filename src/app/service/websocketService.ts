@@ -3,6 +3,7 @@ import {Observable, Subject} from 'rxjs';
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 import {Router} from '@angular/router';
+import { urlEnum } from '../enums/urlEnum';
  
 export interface SubscriptionModel {
   stompSub?: Stomp.Subscription;
@@ -15,7 +16,8 @@ export interface SubscriptionModel {
 })
 export class RmStompServiceService {
   private stompClient: Stomp.Client | null = null;
-  private url = 'http://92.205.30.150:8181/appWebSocket';
+  urlEnum = urlEnum.WEBSOCKETURL;
+  private url = this.urlEnum + '/appWebSocket';
   private connectionSubject: Subject<Stomp.Client | null> = new Subject();
  
   private subscriptions: Map<string, SubscriptionModel> = new Map<string, SubscriptionModel>();

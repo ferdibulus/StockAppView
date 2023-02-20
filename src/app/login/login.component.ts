@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Api } from '../api/api';
@@ -17,22 +18,25 @@ export class LoginComponent implements OnInit {
     "username" : "",
     "password" : ""
   }
-  constructor(private auth:AuthGuard,private router:Router,private api:Api) { }
+  constructor(private auth:AuthGuard,private router:Router,private api:Api, private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    this.api.saveUser(this.user).subscribe((response: any) => {
-      if(response.username == null){
-        this.type = 'error';
-        this.message = "Username/password is incorrect or need to be approved!";
-        this.isVisible = true;
-      }else{
-        localStorage.setItem("access", JSON.stringify(true));
-        localStorage.setItem("username", response.username);
-        this.router.navigate(['home']);
-      }
-    });
+    
+    let body =  {"email": this.user.username.trim(),"password" : this.user.password.trim()};
+    const headers = new HttpHeaders();
+    try{
+      this.http.post('http://localhost/Kelony/php-auth-api/login.php',body,{ headers: headers }).subscribe((resData:any) => {
+         if(resData.token != null){
+          localStorage.setItem("access", JSON.stringify(true));
+          localStorage.setItem("token", resData.token);
+          localStorage.setItem("username", this.user.username);
+          this.router.navigate(['home']);
+         }
+       });
+     }catch(e){
+     }  
   }
 }
